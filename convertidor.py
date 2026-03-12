@@ -44,7 +44,7 @@ def convert():
                     'filename': f"{original_name}_convertido.svg", 'format': 'SVG'
                 })
             else:
-                return jsonify({'error': 'SVG a raster requiere Cairo. Instala GTK3 Runtime y luego: pip install cairosvg'}), 400
+                return jsonify({'error': 'Conversión SVG a raster no soportada sin Cairo.'}), 400
 
         # Raster input
         img = Image.open(io.BytesIO(file_bytes))
@@ -112,5 +112,4 @@ def process_image(img, output_format):
 
 
 if __name__ == '__main__':
-    print("Servidor iniciado -> http://localhost:5000")
-    app.run(debug=True, port=5000)
+    app.run()
